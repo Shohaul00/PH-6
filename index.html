@@ -24,7 +24,11 @@
       </div>
       <button type="button" id="search-btn" class="btn btn-primary mb-2">Search</button>
     </div>
+    <div>
+      <p id="no-result-found" class="text-center">Search Results: <span id="total-result"> 0 </span> Images Found</p>
+    </div>
     <!-- loading spinner!!! -->
+    
     <section id="loading-spinner" class="d-none">
       <div class="d-flex justify-content-center m-5">
         <div class="spinner-border text-info" role="status">
@@ -36,7 +40,7 @@
       <div class="justify-content-around align-items-center mt-3 gallery-header mb-2">
         <h3 class="head-title text-center">Select image for create slider</h3>
         <div class="input-group col-md-3 mb-2 mb-md-0">
-          <input class="form-control" id="duration" type="number" min="0" oninput="validity.valid||(value='')" placeholder="Change duration (in MiliSeconds)">
+          <input class="form-control" id="duration" type="number" min="0" oninput="validity.valid||(value='')" placeholder="Change Time (in MiliSeconds)">
         </div>
         <button id="create-slider" class="btn btn-primary px-5">Create slider</button>
       </div>

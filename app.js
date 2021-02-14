@@ -18,6 +18,8 @@ const KEY = '15674931-a9d714b6e9d654524df198e00&q';
 const showImages = (images) => {
   imagesArea.style.display = 'block';
   gallery.innerHTML = '';
+  const totalResult = document.getElementById('total-result');
+  totalResult.innerText = images.length;
   // show gallery title
   galleryHeader.style.display = 'flex';
   images.forEach(image => {
@@ -52,6 +54,7 @@ const selectItem = (event, img) => {
   }
 }
 
+
 var timer
 const createSlider = () => {
   // check slider image length
@@ -59,14 +62,15 @@ const createSlider = () => {
     alert('Select at least 2 image.')
     return;
   }
+
   // crate slider previous next area
   sliderContainer.innerHTML = '';
   const prevNext = document.createElement('div');
   prevNext.className = "prev-next d-flex w-100 justify-content-between align-items-center";
   prevNext.innerHTML = ` 
   <span class="prev" onclick="changeItem(-1)"><i class="fas fa-chevron-left"></i></span>
+  <button id="button" data-bs-toggle="tooltip" data-bs-placement="bottom" title="This Will Delete Your Slider!" onclick="goBack()"><i class="fas fa-times-circle"></i></button>
   <span class="next" onclick="changeItem(1)"><i class="fas fa-chevron-right"></i></span>
-  <button data-bs-toggle="tooltip" data-bs-placement="bottom" title="This Will Delete Your Slider!" onclick="goBack()"><i class="fas fa-backspace"></i></button>
   `;
 
   sliderContainer.appendChild(prevNext)
