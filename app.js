@@ -37,11 +37,6 @@ const getImages = (query) => {
     .catch(err => console.log(err))
 }
 
-const toggleSpinner = () => {
-  const spinner = document.getElementById('loading-spinner');
-  spinner.classList.toggle('d-none');
-}
-
 //slider section!
 let slideIndex = 0;
 const selectItem = (event, img) => {
@@ -134,3 +129,10 @@ searchBtn.addEventListener('click', function () {
 sliderBtn.addEventListener('click', function () {
   createSlider()
 })
+
+// loading spinner! ==>
+const toggleSpinner = () => {
+  const spinner = document.getElementById('loading-spinner');
+  spinner.classList.toggle('d-none');
+  imagesArea.classList.toggle('d-none');
+}
