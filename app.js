@@ -25,28 +25,37 @@ const showImages = (images) => {
     div.innerHTML = ` <img class="img-fluid img-thumbnail" onclick=selectItem(event,"${image.webformatURL}") src="${image.webformatURL}" alt="${image.tags}">`;
     gallery.appendChild(div)
   })
-
+  toggleSpinner()
 }
 
 const getImages = (query) => {
+  toggleSpinner()
   fetch(`https://pixabay.com/api/?key=${KEY}=${query}&image_type=photo&pretty=true`)
     .then(response => response.json())
-    .then(data => showImages(data.hitS))
+    .then(data => showImages(data.hits))
     .catch(err => console.log(err))
 }
 
+const toggleSpinner = () => {
+  const spinner = document.getElementById('loading-spinner');
+  spinner.classList.toggle('d-none');
+}
+
+//slider section!
 let slideIndex = 0;
 const selectItem = (event, img) => {
   let element = event.target;
-  element.classList.add('added');
- 
   let item = sliders.indexOf(img);
   if (item === -1) {
+    element.classList.toggle('added');
     sliders.push(img);
-  } else {
-    alert('Hey, Already added !')
+  } 
+  else {
+    sliders.splice(item, 1)
+    element.classList.toggle('added');
   }
 }
+
 var timer
 const createSlider = () => {
   // check slider image length
@@ -65,7 +74,7 @@ const createSlider = () => {
 
   sliderContainer.appendChild(prevNext)
   document.querySelector('.main').style.display = 'block';
-  // hide image aria
+  // hide image area
   imagesArea.style.display = 'none';
   const duration = document.getElementById('duration').value || 1000;
   sliders.forEach(slide => {
