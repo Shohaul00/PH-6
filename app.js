@@ -66,6 +66,7 @@ const createSlider = () => {
   prevNext.innerHTML = ` 
   <span class="prev" onclick="changeItem(-1)"><i class="fas fa-chevron-left"></i></span>
   <span class="next" onclick="changeItem(1)"><i class="fas fa-chevron-right"></i></span>
+  <button data-bs-toggle="tooltip" data-bs-placement="bottom" title="This Will Delete Your Slider!" onclick="goBack()"><i class="fas fa-backspace"></i></button>
   `;
 
   sliderContainer.appendChild(prevNext)
@@ -135,4 +136,8 @@ const toggleSpinner = () => {
   const spinner = document.getElementById('loading-spinner');
   spinner.classList.toggle('d-none');
   imagesArea.classList.toggle('d-none');
+}
+
+const goBack = () => {
+  location.reload();
 }
